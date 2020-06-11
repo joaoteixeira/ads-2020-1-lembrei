@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class TaskController extends Controller
 {
@@ -45,9 +48,18 @@ class TaskController extends Controller
         $task = new Task;
         
         //atribuir os dados
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->date = $request->date;
+
         //salvar lembrete
-        //mensagemd de sucesso
+        $task->save();
+
+        //mensagem de sucesso
+        Session::flash('success', 'Anotação criada com sucesso!');
+
         //retornar
+        return redirect()->route('task.create');
 
     }
 

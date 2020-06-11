@@ -1,4 +1,4 @@
-@extends ('layouts.admin')
+@extends ('layouts.teste')
 
 @section('title', 'Criar lembrete')
 
