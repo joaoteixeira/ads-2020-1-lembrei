@@ -16,7 +16,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return "index";
+        $tasks = Task::paginate(5);
+
+        return view('tasks.index')->with('tasks', $tasks);
+
+
     }
 
     /**
@@ -41,7 +45,7 @@ class TaskController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255|min:3',
             'description' => 'required|string|max:10000|min:10',
-            'date' => 'required|date' 
+            'date' => 'required|date', 
         ]);
 
         //criar novo lembrete

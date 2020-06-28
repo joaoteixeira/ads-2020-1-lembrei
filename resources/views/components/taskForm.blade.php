@@ -4,7 +4,7 @@
     {{Form::text('name', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Novo Lembrete'])}}
 
     {{ Form::label('description', 'Descrição', ['class' => 'control-label mt-3']) }}
-    {{Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Descrição do Lembrete'])}}
+    {{Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Descrição do Lembrete'])}}
 
     {{ Form::label('date', 'Data', ['class' => 'control-label mt-3']) }}
     {{ Form::date('date', \Carbon\Carbon::now(), ['class' => 'form-control']) }}
