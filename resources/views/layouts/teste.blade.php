@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description" content="">
+    <meta name="description" content="lembrete, anotações">
     <meta name="author" content="">
-    <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+    <link rel="icon" href="{{ asset ('media/logo1.ico')}}">
 
     <title>Lembrei - @yield('title')</title>
 
@@ -26,6 +26,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+    <!-- icones -->
+    <script src="https://kit.fontawesome.com/be58be0e2b.js" crossorigin="anonymous"></script>
 
 
     <!-- =======================================================
@@ -42,11 +44,14 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <a href="" class="logo mr-auto"><img src="{{ asset ('media/logo1.jpg')}}" alt="" class="img-fluid"></a>
+      <a href="{{ route('task.index') }}" class="logo mr-auto "><img src="{{ asset ('media/logo1.ico')}}" alt="" class="img-fluid"></a>
 
-      <h1 class="logo mr-auto"><a href="">Lembrei!</a></h1>      
+      <h1 class="logo mr-auto" style="margin-left: 100px;"><a href="{{ route('task.index') }}">Lembrei!</a></h1>      
 
-      <a href="{{ route('task.create') }}" class="btn btn-outline-success">Criar Lembrete!</a>
+      <a href="{{ route('task.create') }}" class="btn btn-outline-success">
+        <i class="fas fa-plus"></i>
+        Criar Lembrete!
+      </a>
 
     </div>
   </header><!-- End Header -->
@@ -70,18 +75,12 @@
 
         <div class="row  justify-content-center">
           <div class="col-lg-6">
+            <img src="{{ asset ('media/logo.ico')}}" width="100px" height="100px" alt="Crie um lembrete!" class="img-fluid logo mr-auto">
             <h3>Lembrei!</h3>
             <p>Para você nunca se esquecer.</p>
           </div>
         </div>
 
-        <div class="row footer-newsletter justify-content-center">
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
 
         <div class="social-links">
           <a href="https://twitter.com/Lucasracki" class="twitter"><i class="bx bxl-twitter"></i></a>

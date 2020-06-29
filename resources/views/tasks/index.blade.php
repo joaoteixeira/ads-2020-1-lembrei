@@ -20,7 +20,7 @@
                 <div class="col-sm-12">
                     <div class="card text-center">
                         <div class="card-header">
-                            <small>{{ $task->created_at }}</small>
+                            Criado <small>{{ $task->created_at }}</small>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">
@@ -28,9 +28,17 @@
                             </h3>
                             
                             <p class="card-text">{{ $task->description}}</p>
+                            <hr>
                             {!! Form::open(['route' => ['task.destroy', $task->id], 'method' => 'DELETE']) !!}
-                                <a href="{{ route('task.edit', $task->id) }}" class="btn btn-sm btn-outline-primary">Editar</a>    
-                                <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+                                <a href="{{ route('task.edit', $task->id) }}" class="btn btn-sm btn-outline-primary">
+                                    <i class="far fa-edit"></i>
+                                    Editar
+                                </a>    
+                                
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                    Excluir
+                                </button>
                             {!! Form::close() !!}
                             
                         </div>

@@ -10,11 +10,17 @@
 <div class="row justify-content-center mt-3">
   
     <div class="col-sm-4">
-        <a href="{{ route('task.index') }}" class="btn btn-block btn-secondary">Voltar</a>
+        <a href="{{ route('task.index') }}" class="btn btn-block btn-secondary">
+            <i class="fas fa-arrow-left"></i>
+            Voltar
+        </a>
     </div>
 
     <div class="col-sm-4">
-        <button class="btn btn-block btn-primary" type="submit">Salvar Lembrete</button>
+        <button class="btn btn-block btn-primary" type="submit">
+            <i class="fas fa-check"></i>
+            Salvar
+        </button>
     </div>
 
 </div>
