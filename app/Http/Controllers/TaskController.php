@@ -41,7 +41,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //validar a data
+        //validar os dados
         $this->validate($request, [
             'name' => 'required|string|max:255|min:3',
             'description' => 'required|string|max:10000|min:10',
@@ -101,7 +101,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //validar a data
+        //validar os dados
         $this->validate($request, [
             'name' => 'required|string|max:255|min:3',
             'description' => 'required|string|max:10000|min:10',
