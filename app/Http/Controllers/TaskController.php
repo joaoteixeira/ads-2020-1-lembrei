@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::paginate(5);
+        $tasks = Task::orderBy('date', 'asc')-> paginate(5);
 
         return view('tasks.index')->with('tasks', $tasks);
 
@@ -60,10 +60,10 @@ class TaskController extends Controller
         $task->save();
 
         //mensagem de sucesso
-        Session::flash('success', 'Anotação criada com sucesso!');
+        Session::flash('success', 'Anotação criada!');
 
         //retornar
-        return redirect()->route('task.create');
+        return redirect()->route('task.index');
 
     }
 
@@ -86,7 +86,10 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::find($id);
+        $task->dateFormatting = false;
+
+        return view('tasks.edit')->withTask($task);
     }
 
     /**
@@ -98,7 +101,29 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validar a data
+        $this->validate($request, [
+            'name' => 'required|string|max:255|min:3',
+            'description' => 'required|string|max:10000|min:10',
+            'date' => 'required|date', 
+        ]);
+
+        //encontrar a relação do lembrete
+        $task = Task::find($id);
+        
+        //atribuir os dados
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->date = $request->date;
+
+        //salvar lembrete
+        $task->save();
+
+        //mensagem de sucesso
+        Session::flash('success', 'Anotação salva!');
+
+        //retornar
+        return redirect()->route('task.index');
     }
 
     /**
@@ -109,6 +134,12 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+
+        $task->delete();
+
+        Session::flash('success', 'Lembrete Excluído!');
+
+        return redirect()->route('task.index');
     }
 }
